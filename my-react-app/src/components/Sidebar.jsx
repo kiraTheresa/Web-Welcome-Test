@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { 
   FaHome, 
-  FaFeatures, 
+  FaCubes, 
   FaCode, 
   FaProjectDiagram, 
   FaUsers, 
@@ -18,7 +18,7 @@ const Sidebar = () => {
   // 导航项配置
   const navItems = [
     { id: 'welcome', label: '开门界面', icon: <FaHome /> },
-    { id: 'features', label: '功能演示', icon: <FaFeatures /> },
+    { id: 'features', label: '功能演示', icon: <FaCubes /> },
     { id: 'code', label: '代码示例', icon: <FaCode /> },
     { id: 'workflow', label: '开发流程', icon: <FaProjectDiagram /> },
     { id: 'team', label: '团队成员', icon: <FaUsers /> },
