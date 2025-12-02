@@ -5,7 +5,7 @@ import { tomorrow } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 const CodeDemo = () => {
   // 模拟标注结果数据
-  const标注结果 = [
+  const annotationResults = [
     { text: '李白', type: 'PERSON', color: 'bg-blue-500/30 border-blue-500' },
     { text: '，', type: 'PUNCTUATION', color: 'bg-gray-500/30 border-gray-500' },
     { text: '字', type: 'WORD', color: 'bg-gray-500/30 border-gray-500' },
@@ -79,7 +79,7 @@ const CodeDemo = () => {
               </h3>
               <div className="bg-gray-900/80 rounded-lg p-6 min-h-64">
                 <div className="flex flex-wrap gap-2 mb-6">
-                  {标注结果.map((item, index) => (
+                  {annotationResults.map((item, index) => (
                     <span
                       key={index}
                       className={`inline-block px-3 py-1 rounded-full text-sm font-medium border ${item.color} transition-all duration-200 hover:scale-105`}
