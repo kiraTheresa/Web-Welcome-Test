@@ -63,12 +63,33 @@ const CodeDemo = () => {
               <h3 className="text-xl font-semibold mb-4 text-gold-brown flex items-center gap-2">
                 <span>📜</span> 示例文档
               </h3>
-              <div className="bg-gray-900/80 rounded-lg p-6 h-64 flex items-center justify-center">
-                <div className="text-center">
-                  <div className="text-gold-brown text-4xl mb-4">📖</div>
-                  <p className="text-gray-300 mb-2">李白诗集选段</p>
-                  <p className="text-gray-500 text-sm">（示例文档占位）</p>
-                </div>
+              <div className="bg-gray-900/80 rounded-lg p-6 h-64 overflow-hidden relative">
+                {/* 古籍纹理背景 */}
+                <div className="absolute inset-0 opacity-20" style={{
+                  backgroundImage: 'url("https://images.unsplash.com/photo-1606041387985-290290d09b10?w=600&auto=format&fit=crop&q=80")',
+                  backgroundSize: 'cover',
+                }} />
+                
+                {/* 示例文本 */}
+                <motion.div 
+                  className="relative z-10 space-y-2 text-gray-300 text-lg font-serif" 
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8 }}
+                >
+                  <p className="leading-relaxed">
+                    <span className="text-gold-brown">李白</span>，字太白，青莲居士，
+                    <span className="text-gold-brown">唐代</span>著名诗人。
+                  </p>
+                  <p className="leading-relaxed mt-4">
+                    他的诗歌风格豪放飘逸，意境奇妙，被誉为"诗仙"。
+                    代表作品有《静夜思》、《望庐山瀑布》等。
+                  </p>
+                  <p className="text-gold-brown/70 text-sm mt-6 italic">
+                    —— 《旧唐书·李白传》节选
+                  </p>
+                </motion.div>
               </div>
             </div>
 
@@ -80,12 +101,25 @@ const CodeDemo = () => {
               <div className="bg-gray-900/80 rounded-lg p-6 min-h-64">
                 <div className="flex flex-wrap gap-2 mb-6">
                   {annotationResults.map((item, index) => (
-                    <span
+                    <motion.span
                       key={index}
                       className={`inline-block px-3 py-1 rounded-full text-sm font-medium border ${item.color} transition-all duration-200 hover:scale-105`}
+                      initial={{ opacity: 0, scale: 0.5, y: 10 }}
+                      whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ 
+                        duration: 0.3, 
+                        delay: 0.1 * index, 
+                        type: "spring",
+                        stiffness: 100
+                      }}
+                      whileHover={{ 
+                        scale: 1.1, 
+                        boxShadow: `0 0 15px ${item.color.includes('blue') ? 'rgba(59, 130, 246, 0.5)' : item.color.includes('green') ? 'rgba(34, 197, 94, 0.5)' : item.color.includes('purple') ? 'rgba(139, 92, 246, 0.5)' : item.color.includes('yellow') ? 'rgba(234, 179, 8, 0.5)' : 'rgba(239, 68, 68, 0.5)'}`
+                      }}
                     >
                       {item.text}
-                    </span>
+                    </motion.span>
                   ))}
                 </div>
 

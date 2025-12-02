@@ -38,7 +38,14 @@ const GanttScrollView = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          style={{ scrollBehavior: 'smooth' }}
+          style={{
+            scrollBehavior: 'smooth',
+            scrollSnapType: 'x proximity',
+            overflowX: 'auto',
+            WebkitOverflowScrolling: 'touch',
+            msOverflowStyle: 'none',
+            scrollbarWidth: 'thin'
+          }}
         >
           <div className="min-w-[2400px]">
             {/* 甘特图SVG */}

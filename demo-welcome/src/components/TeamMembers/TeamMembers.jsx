@@ -77,14 +77,19 @@ const TeamMembers = () => {
             <motion.div
               key={member.id}
               className="bg-gray-800/50 backdrop-blur-sm rounded-xl p-6 border border-gold-brown/30 text-center"
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 50, scale: 0.9 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: index * 0.1 }}
+              transition={{ 
+                duration: 0.8, 
+                delay: index * 0.1,
+                type: "spring",
+                stiffness: 100
+              }}
               whileHover={{
                 scale: 1.05,
-                boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.2)',
-                borderColor: '#5f8cff',
+                boxShadow: `0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.2), 0 0 30px -10px rgba(${(index === 0 ? '95, 140, 255' : index === 1 ? '171, 110, 255' : index === 2 ? '217, 185, 143' : index === 3 ? '95, 140, 255' : index === 4 ? '171, 110, 255' : index === 5 ? '217, 185, 143' : index === 6 ? '95, 140, 255' : '171, 110, 255')}, 0.4)`,
+                borderColor: index % 3 === 0 ? '#5f8cff' : index % 3 === 1 ? '#ab6eff' : '#d9b98f',
               }}
             >
               {/* 头像 */}

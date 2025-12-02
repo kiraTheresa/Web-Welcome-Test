@@ -92,7 +92,19 @@ const FeatureTabs = () => {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          whileHover={{ boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.2)' }}
+          whileHover={{ 
+            boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.2)',
+            scale: 1.02
+          }}
+          animate={{
+            y: [0, -5, 0],
+          }}
+          transition={{ 
+            repeat: Infinity,
+            duration: 4,
+            ease: 'easeInOut',
+            repeatType: 'reverse'
+          }}
         >
           {/* 标签页导航 */}
           <div className="flex flex-wrap gap-2 mb-8 justify-center">
